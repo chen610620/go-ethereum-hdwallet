@@ -20,15 +20,6 @@ func TestWallet(t *testing.T) {
 		t.Error(err)
 	}
 
-	walletmnemonic, err := wallet.Mnemonic()
-	if err != nil {
-		t.Error(err)
-	}
-
-	if walletmnemonic != mnemonic {
-		t.Error("wrong mnemonic")
-	}
-
 	path, err := ParseDerivationPath("m/44'/60'/0'/0/0")
 	if err != nil {
 		t.Error(err)
@@ -208,8 +199,8 @@ func TestWallet(t *testing.T) {
 		t.Error(err)
 	}
 
-	if len(seed) != 256 {
-		t.Error("expected size of 256")
+	if len(seed) != 64 {
+		t.Error("expected size of 64")
 	}
 
 	seed, err = NewSeedFromMnemonic(mnemonic)
@@ -221,7 +212,7 @@ func TestWallet(t *testing.T) {
 		t.Error("expected size of 64")
 	}
 
-	mnemonic, err = NewMnemonic()
+	mnemonic, err = NewMnemonic(128)
 	if err != nil {
 		t.Error(err)
 	}
