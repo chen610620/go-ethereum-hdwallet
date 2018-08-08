@@ -357,6 +357,13 @@ func (w *Wallet) Path(account accounts.Account) (string, error) {
 	return account.URL.Path, nil
 }
 
+// CheckMnemonic check mnemonic if equal
+func (w *Wallet) CheckMnemonic(mnemonic string) bool {
+	if w.mnemonic == mnemonic{
+		return true
+	}
+	return false
+}
 // ParseDerivationPath parses the derivation path in string format into []uint32
 func ParseDerivationPath(path string) (accounts.DerivationPath, error) {
 	return accounts.ParseDerivationPath(path)
